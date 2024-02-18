@@ -23,16 +23,25 @@ git clone <url-do-repo>
 cd nome-do-repo
 ```
 
-### 2. Configuração do Docker
+### 2. Configuração projeto
+
+Crie a .env a partir da .env.example
+```
+cd backend
+cp .env.example .env
+```
+
+### 3. Configuração do Docker
 Na raiz do projeto, execute:
 
 ```bash
 docker-compose build
 docker-compose run --rm composer install
+docker-compose run --rm artisan key:generate
 docker-compose up -d
 ```
 
-### 3. Rota Backend
+### 4. Rota Backend
 
 Para acessar o backend, abra o navegador e vá para:
 

@@ -12,8 +12,12 @@ class ItemController extends Controller
     public function getItems(ItemRequest $req, ItemService $itemService){
 
         $req = $req->validated();
-        $response = $itemService->getItem($req->page ?? 1, $req->perPage ?? 100);
-        return $response;
+        try {
+            $data = $itemService->getItem($req->page ?? 1, $req->perPage ?? 100);
+        } catch (\Exception $e) {
+            return response($e->getMessage(), 500);
+        }
+        return response($data, 200);
 
     }
 }
