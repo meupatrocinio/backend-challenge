@@ -1,29 +1,52 @@
-There's this legacy API that contains info gathered across decades of existence. Your team needs to use one of the endpoints of that API to build a new web app.
-The problem is that this specific endpoint returns millions of items, paginated at 100 per page.
-Since you will need more flexibility in terms of page size, your team decides to build a frontend for this legacy API that will allow a user defined value for the number of items per page.
-You'll be in charge of this task.
-Here's what you need to do:
+### Descrição
 
-- Create a simple API with just one required endpoint: `GET /items`.
-- This new API will return the list of items of the legacy API, but will accept a `page` and `perPage` arguments returning accordingly.
+Consumo de uma API que recebe parâmetro de página e sempre retorna 100 registros por consulta, refatorando para API que recebe parâmetro de página e quantidade por páginas.
 
-Here's what you need to know about the legacy API:
-- The legacy API is at http://sf-legacy-api.now.sh
-- A simple `GET /items` will return the first 100 items.
-- To go to a specific page you use `GET /items?page=20` for instance.
-- The response will contain info about the total number of items, the current page and how many items per page.
+### Como Rodar:
 
-## Guidelines
-Here's the important stuff that we take into account when reviewing this exercise:
-- It should be done in Javascript/Node.js or PHP/Laravel
-- It should be done using docker
-- It should be simple to start your solution
-- It should contain some setup instructions
-- It should work correctly
-- It should have an automated way to prove it's working correctly
+Este README fornece instruções para configurar e executar o projeto usando Docker.
 
-**Ideally** we want this exercise to take you **around 90 minutes**. This time limit is just a reference so you can infer the level of polish we expect from your solution. You're free to spend as much time on it as you wish.
-## Delivery
-You will be given access to a github repository to work on your exercise. To submit your solution, open a pull request against the master branch. Use the body of the pull request to briefly describe your solution, what might be incomplete and why, etc.
-## Important
-We will **not** consider submissions that either don't work when following provided instructions nor that were pushed directly to master (you need to open a pull request and leave it open).
+## Pré-requisitos
+
+Certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
+
+- Git
+- Docker
+- Docker Compose
+
+## Instruções para Execução
+
+### 1. Clone o Repositório
+
+```bash
+git clone <url-do-repo>
+cd nome-do-repo
+```
+
+### 2. Configuração projeto
+
+Crie a .env a partir da .env.example
+```
+cd backend
+cp .env.example .env
+```
+
+### 3. Configuração do Docker
+Na raiz do projeto, execute:
+
+```bash
+docker-compose build
+docker-compose run --rm composer install
+docker-compose run --rm artisan key:generate
+docker-compose up -d
+```
+
+### 4. Rota Backend
+
+Para acessar o backend, abra o navegador e vá para:
+
+[http://localhost:8080](http://localhost:8080)
+
+Endpoint da API de items: 
+
+[http://localhost:8080/api/items](http://localhost:8080/api/items)
