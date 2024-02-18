@@ -30,14 +30,14 @@ Na raiz do projeto, execute:
 docker-compose build
 docker-compose run --rm composer install
 docker-compose up -d
-
 ```
 
 ### 3. Rota Backend
-   Para acessar o backend, abra o navegador e vá para:
 
-   [http://localhost:8080](http://localhost:8080)
+Para acessar o backend, abra o navegador e vá para:
 
-   Endpoint da API de items: 
+[http://localhost:8080](http://localhost:8080)
 
-   [http://localhost:8080/api/items](http://localhost:8080/api/items)
+Endpoint da API de items: 
+
+[http://localhost:8080/api/items](http://localhost:8080/api/items)
