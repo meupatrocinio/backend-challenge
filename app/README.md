@@ -8,6 +8,8 @@ This application runs on Docker, as it has a single container for a PHP image bu
 
 This application also uses Composer to handle dependencies.
 
+You may need Postman or Insomnia to send requests to the endpoint. Or you can send any of the requests on
+
 ## Installation
 Once you have Node and Docker running on your environment, it's time to set up this application. For this, start by cloning this repository on a folder of your choosing, and then move into the newly created folder and performe the following instructions.
 
@@ -46,22 +48,19 @@ docker-compose down && docker-compose up -d
 ```
 
 ## Usage
-To use this app, access it on your browser with the following URL `http://localhost:8015/`. 
 
-On the main page you'll have access to a list of Spaceships from the Star Wars franchise. From here you can:
+The endpoint on the app running locally is `http://localhost:8015/items`. It can take 2 arguments: `perPage` to set the number of items por page and `page` to retrieve a specific page.
+Examples:
 
-* Click on the "Create" tab to access the form for creating new ship entries on the database
-* Click on the lens icon to get a detailed view of a ship.
-* Click on the pencil icon to open up a modal with a form to edit the ship's detail.
-* Click on the trash icon to delete a ship from the database.
+```
+curl --location 'http://localhost:8015/items'
+```
+```
+curl --location 'http://localhost:8015/items?perPage=75'
+```
+```
+curl --location 'http://localhost:8015/items?page=3&perPage=25'
+```
 
-## Testing
-If you want to quickly test if your application is up and running, try running the tests feature. For data safety reasons we recommend running the json-server feature using the empty db file for testing. Run this:
-```
-json-server --watch mock_server/db_testing.json
-```
-Then this for testing:
-```
-php artisan test tests/Feature/BasicTesting.php
-```
-This will test the application main features. Remember to make sure `RESOURCE_URL` and `RESOURCE_PORT`are set up on your .env and that your json-server app is up and accepting requests.
+As mentioned before, if you have Postman or Insomnia, you can use them to send requests testing the endpoint. The parameters are GET Request, `http://localhost:8015/items` for URL and `page`
+or `perPage` as optional parameters
