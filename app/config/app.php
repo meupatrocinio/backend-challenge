@@ -232,4 +232,9 @@ return [
 
     ],
 
+
+    /*
+    */
+
+    'legacy_api_url' => env('LEGACY_API_URL'),
 ];
