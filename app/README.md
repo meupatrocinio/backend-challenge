@@ -39,7 +39,12 @@ Make sure the environment variable `LEGACY_API_URL` is configured. The default v
 docker-compose exec web chmod -R 777 storage/
 ```
 
-5. And you're done! If you run into any troubles try cleaning Laravel's cache or turning off and on again the app's container. Use:
+5. You're nearly there! Next you need to run Laravel's application key generation command. Laravel use this key for requests authentication. Use:
+```
+docker-compose exec web php artisan key:generate
+```
+
+6. And you're done! If you run into any troubles try cleaning Laravel's cache or turning off and on again the app's container. Use:
 ```
 docker-compose exec web php artisan cache:clear
 ```
